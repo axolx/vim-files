@@ -25,6 +25,7 @@
 [submodule "bundle/command-t"]
 	path = bundle/command-t
 	url = git://github.com/akitaonrails/Command-T.git
+    ignore = dirty
 [submodule "bundle/ack"]
 	path = bundle/ack
 	url = git://github.com/mileszs/ack.vim.git
@@ -39,7 +40,8 @@
 	url = git://github.com/othree/html5.vim.git
 [submodule "bundle/gundo"]
 	path = bundle/gundo
-	url = http://github.com/sjl/gundo.vim.git
+    url = http://github.com/sjl/gundo.vim.git
+    ignore = dirty
 [submodule "bundle/gist"]
 	path = bundle/gist
 	url = http://github.com/mattn/gist-vim.git
