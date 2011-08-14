@@ -1,0 +1,1 @@
+let g:netrw_bookmarklist= ['scp://d2//mnt/main/qa/qa3/']

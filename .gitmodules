@@ -1,0 +1,102 @@
+[submodule "bundle/snippets"]
+	path = bundle/snippets
+	url = git://github.com/akitaonrails/snipmate-snippets.git
+[submodule "bundle/surround"]
+	path = bundle/surround
+	url = git://github.com/tpope/vim-surround.git
+[submodule "bundle/nerdtree"]
+	path = bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
+[submodule "bundle/nerdcommenter"]
+	path = bundle/nerdcommenter
+	url = git://github.com/scrooloose/nerdcommenter.git
+[submodule "bundle/fugitive"]
+	path = bundle/fugitive
+	url = git://github.com/tpope/vim-fugitive.git
+[submodule "bundle/markdown"]
+	path = bundle/markdown
+	url = git://github.com/tpope/vim-markdown.git
+[submodule "bundle/snipmate"]
+	path = bundle/snipmate
+	url = git://github.com/akitaonrails/snipmate.vim.git
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = git://github.com/scrooloose/syntastic.git
+[submodule "bundle/command-t"]
+	path = bundle/command-t
+	url = git://github.com/akitaonrails/Command-T.git
+[submodule "bundle/ack"]
+	path = bundle/ack
+	url = git://github.com/mileszs/ack.vim.git
+[submodule "bundle/supertab"]
+	path = bundle/supertab
+	url = git://github.com/ervandew/supertab.git
+[submodule "bundle/vim-preview"]
+	path = bundle/vim-preview
+	url = git://github.com/greyblake/vim-preview.git
+[submodule "bundle/html5.vim"]
+	path = bundle/html5.vim
+	url = git://github.com/othree/html5.vim.git
+[submodule "bundle/gundo"]
+	path = bundle/gundo
+	url = http://github.com/sjl/gundo.vim.git
+[submodule "bundle/gist"]
+	path = bundle/gist
+	url = http://github.com/mattn/gist-vim.git
+[submodule "bundle/yankring"]
+	path = bundle/yankring
+	url = git://github.com/chrismetcalf/vim-yankring.git
+[submodule "bundle/indentguides"]
+	path = bundle/indentguides
+	url = https://github.com/vim-scripts/Indent-Guides.git
+[submodule "bundle/jslint"]
+	path = bundle/jslint
+	url = git://github.com/hallettj/jslint.vim.git
+[submodule "bundle/vim-less"]
+	path = bundle/vim-less
+	url = git://github.com/groenewege/vim-less.git
+[submodule "bundle/matchit"]
+	path = bundle/matchit
+	url = git://github.com/mhz/vim-matchit.git
+[submodule "bundle/mru"]
+	path = bundle/mru
+	url = git://github.com/ornicar/vim-mru.git
+[submodule "bundle/netrw"]
+	path = bundle/netrw
+	url = git://github.com/vim-scripts/netrw.vim.git
+[submodule "bundle/PIV"]
+	path = bundle/PIV
+	url = git://github.com/spf13/PIV.git
+[submodule "bundle/pathogen"]
+	path = bundle/pathogen
+	url = git://github.com/tpope/vim-pathogen.git
+[submodule "bundle/project"]
+	path = bundle/project
+	url = git://github.com/shemerey/vim-project.git
+[submodule "bundle/vcscommand"]
+	path = bundle/vcscommand
+	url = git://repo.or.cz/vcscommand
+[submodule "bundle/taglist"]
+	path = bundle/taglist
+	url = git://github.com/vim-scripts/taglist.vim.git
+[submodule "bundle/xmledit"]
+	path = bundle/xmledit
+	url = git://github.com/sukima/xmledit.git
+[submodule "bundle/supertab-continued"]
+	path = bundle/supertab-continued
+	url = git://github.com/vim-scripts/SuperTab-continued..git
+[submodule "bundle/color-solarized"]
+	path = bundle/color-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "bundle/color-inkpot"]
+	path = bundle/color-inkpot
+	url = git://github.com/ciaranm/inkpot.git
+[submodule "bundle/color-molokai"]
+	path = bundle/color-molokai
+	url = git://github.com/vim-scripts/molokai.git
+[submodule "bundle/color-github"]
+	path = bundle/color-github
+	url = git://github.com/grillpanda/github-colorscheme.git
+[submodule "bundle/color-vividchalk"]
+	path = bundle/color-vividchalk
+	url = git://github.com/tpope/vim-vividchalk.git
