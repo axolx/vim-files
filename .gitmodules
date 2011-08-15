@@ -102,3 +102,6 @@
 [submodule "bundle/color-vividchalk"]
 	path = bundle/color-vividchalk
 	url = git://github.com/tpope/vim-vividchalk.git
+[submodule "bundle/bufexplorer"]
+	path = bundle/bufexplorer
+	url = git://github.com/markabe/bufexplorer.git
