@@ -1,1 +1,1 @@
-let g:netrw_bookmarklist= ['scp://d2//mnt/main/qa/qa3/']
+let g:netrw_bookmarklist= ['scp://d2//mnt/main/qa/qa3/', 'sftp://paco.ombu///vol/main/stand.stage/']

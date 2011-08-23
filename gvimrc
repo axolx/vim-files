@@ -2,7 +2,8 @@ set background=dark
 set cursorline
 set lines=50                 " Makes gui win 50 chars tall
 set columns=85
-set guifont=Menlo:h12
+set guifont=Monaco:h12
+set noantialias
 set fuopt=maxvert,maxhorz    " Full screen options
 set guioptions-=T            " turn off toolbar
 
