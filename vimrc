@@ -268,12 +268,14 @@ let g:acp_completeoptPreview = 1
 "let g:acp_completeOption = ".,w,b,k,t,i"
 let g:acp_behaviorSnipmateLength = 1
 " ------------------------------------------------------------------------------
+" {{{2 Syntastic
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=1
 " ------------------------------------------------------------------------------
 " {{{2 Pathogen                                                                 
 source ~/.vim/bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 " {{{1 Language Specific
-" ------------------------------------------------------------------------------
 " {{{2 PHP
 "  @see:
 "  http://www.koch.ro/blog/index.php?/archives/62-Integrate-PHP-CodeSniffer-in-VIM.html
