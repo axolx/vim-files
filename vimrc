@@ -116,7 +116,6 @@ set laststatus=2             " Always hide the statusline
 " ------------------------------------------------------------------------------
 "  Completion                                                               {{{2
 " ------------------------------------------------------------------------------
-
 set completeopt=menu,longest,preview
 set infercase
 
@@ -285,6 +284,7 @@ let Tlist_Process_File_Always = 1
 let tlist_php_settings = 'php;c:class;d:constant;f:function'
 noremap <Leader>c1 :TlistToggle<CR>
 noremap <Leader>cr :!/opt/local/bin/ctags -R .<CR>
+noremap <Leader>cd :!/opt/local/bin/ctags --langmap=php:.engine.inc.module.theme.php --php-kinds=cdfi --languages=php --recurse<CR>
 
 " ------------------------------------------------------------------------------
 "  Buffexplorer                                                             {{{2  
@@ -337,6 +337,13 @@ noremap <S-F5> :DbgDetach<CR>
 noremap <F8> :DbgToggleBreakpoint<CR>
 let g:VCSCommandVCSTypeOverride = [ [ '\/si\/core\/', 'git' ] ]
 
+" ------------------------------------------------------------------------------
+"   AutoComplPop                                                            {{{2  
+" ------------------------------------------------------------------------------
+let g:acp_enableAtStartup = 1
+let g:acp_completeoptPreview = 1
+"let g:acp_completeOption = ".,w,b,k,t,i"
+let g:acp_behaviorSnipmateLength = 1
 
 " ------------------------------------------------------------------------------
 "   Language Specific                                                       {{{1
