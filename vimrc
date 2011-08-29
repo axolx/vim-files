@@ -138,7 +138,7 @@ let g:tlist_javascript_settings = 'javascript;s:string;a:array;o:object;f:functi
 set errorformat+=\"%f\"\\,%l\\,%c\\,%t%*[a-zA-Z]\\,\"%m\"\\,%*[a-zA-Z0-9_.-]
 
 " ------------------------------------------------------------------------------
-" {{{2 functions
+" {{{2 Functions
 function! ToggleHLSearch()
     if &hls
         set nohls
