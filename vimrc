@@ -1,18 +1,7 @@
 " ------------------------------------------------------------------------------
-"  Pathogen                                                                 {{{2  
+" {{{1 Core Options (@todo organize these a bit)
 " ------------------------------------------------------------------------------
-
-source ~/.vim/bundle/pathogen/autoload/pathogen.vim
-call pathogen#infect()
-
-" ------------------------------------------------------------------------------
-"   Core options                                                            {{{1  
-" ------------------------------------------------------------------------------
-
-" ------------------------------------------------------------------------------
-"  Options (@todo organize these a bit)                                     {{{2  
-" ------------------------------------------------------------------------------
-
+" {{{2 Base (@todo organize these a bit)
 set guitablabel=%t
 set nocompatible             " dont worry about Vi compat
 set history=500              " command line remembers X commands
@@ -55,11 +44,11 @@ set encoding=utf-8
 set fileformats=unix,mac,dos
 set undofile
 set path=$PWD/**             " http://vim.wikia.com/wiki/VimTip1146
-
+filetype on
+syntax on
+filetype plugin indent on
 " ------------------------------------------------------------------------------
-"  Tabs and indenting                                                       {{{2
-" ------------------------------------------------------------------------------
-
+" {{{2 Tabs and indenting
 set autoindent               " Do dumb autoindentation when no filetype is set
 set tabstop=4                " Real tab characters are 8 spaces wide,
 set shiftwidth=4             " but an indent level is 2 spaces wide.
@@ -67,74 +56,48 @@ set softtabstop=4            " <BS> over an autoindent deletes both spaces.
 set expandtab                " Use spaces, not tabs, for autoindent/tab key.
 set smarttab                 " some smarty tab handling
 set shiftround               " Indent/outdent to nearest tabstop
-
 " ------------------------------------------------------------------------------
-"  Windows, Buffers                                                         {{{2
-" ------------------------------------------------------------------------------
-
+" {{{2 Windows, Buffers
 set splitright
 set hidden                   " can jump btw buffers w/out saving
-
 " ------------------------------------------------------------------------------
-"  Buffer reading and writing                                               {{{2
-" ------------------------------------------------------------------------------
-
+" {{{2 Buffer reading and writing
 set noautowrite              " Never write a file unless I request it.
 set noautowriteall           " NEVER.
 set noautoread               " Don't automatically re-read changed files.
 set modeline                 " Allow vim options to be embedded in files;
 set modelines=5              " they must be within the first or last 5 lines.
 set fileformats=unix,dos,mac         " Try recognizing dos, unix, and mac line endings.
-
 " ------------------------------------------------------------------------------
-"  Backups                                                                  {{{2  
-" ------------------------------------------------------------------------------
-
+" {{{2 Backups
 set nobackup                 " Turn backup off
 set nowritebackup
 set noswapfile
-
 " ------------------------------------------------------------------------------
-"  Undo                                                                     {{{2
-" ------------------------------------------------------------------------------
-
+" {{{2 Undo
 set undodir=~/.vim/undodir
 set undofile
 set undolevels=1000          " maximum number of changes that can be undone
 set undoreload=10000         " maximum number lines to save for undo on a buffer reload
-
 " ------------------------------------------------------------------------------
-"  Statusline                                                               {{{2
-" ------------------------------------------------------------------------------
-
+" {{{2 Statusline
 set laststatus=2             " Always hide the statusline
-
 " Format the statusline
 " set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L:%c
-
-
 " ------------------------------------------------------------------------------
-"  Completion                                                               {{{2
-" ------------------------------------------------------------------------------
+" {{{2 Completion
 set completeopt=menu,longest,preview
 set infercase
-
-
+" ------------------------------------------------------------------------------
+" {{{2 Color
 " colorscheme axolx2
 " colorscheme lettuce
 " colorscheme darkblue
 " colorscheme xterm16
 " colorscheme inkpot
 colorscheme default
-filetype on
-syntax on
-filetype plugin indent on
-
-
 " ------------------------------------------------------------------------------
-"  Autocommands                                                             {{{2
-" ------------------------------------------------------------------------------
-
+" {{{2 Autocommands                                                             
 if has("autocmd")
     " When editing a file, always jump to the last cursor position
     autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
@@ -152,11 +115,7 @@ if has("autocmd")
   autocmd bufwritepost .vimrc source ~/.gvimrc
  augroup END
 endif
-
-" ------------------------------------------------------------------------------
-"  @todo Oragnize me!                                                       {{{2
-" ------------------------------------------------------------------------------
-
+" {{{2 @todo Oragnize me!
 let g:netrw_liststyle = 1
 let g:netrw_hide = 1
 let g:netrw_winsize = 20
@@ -174,14 +133,12 @@ let g:proj_flags='g'
 if filereadable('~/local/bin/svn')
     let g:VCSCommandSVNExec='~/local/bin/svn'
 endif
-
 let g:VCSCommandSVNDiffOpt='w'
 let g:tlist_javascript_settings = 'javascript;s:string;a:array;o:object;f:function'
+set errorformat+=\"%f\"\\,%l\\,%c\\,%t%*[a-zA-Z]\\,\"%m\"\\,%*[a-zA-Z0-9_.-]
 
 " ------------------------------------------------------------------------------
-"   functions                                                               {{{2
-" ------------------------------------------------------------------------------
-
+" {{{2 functions
 function! ToggleHLSearch()
     if &hls
         set nohls
@@ -217,11 +174,8 @@ function! HasPaste()
         return ''
     endif
 endfunction
-
 " ------------------------------------------------------------------------------
-"  Mappings                                                                 {{{2
-" ------------------------------------------------------------------------------
-
+" {{{2 Mappings
 let mapleader = '\'
 noremap <silent> <Leader>h :call ToggleHLSearch()<CR> 
 noremap <silent> <Leader>s :call ToggleSpell()<CR> 
@@ -249,11 +203,8 @@ cmap w!! w !sudo tee % >/dev/null
 " fixes lame regex system
 "nnoremap / /\v
 "vnoremap / /\v
-
 " ------------------------------------------------------------------------------
-"  File associations                                                        {{{2
-" ------------------------------------------------------------------------------
-
+" {{{2 File associations
 au BufRead,BufNewFile *.tt2 set filetype=tt2html
 au BufRead,BufNewFile *.tt2 set foldmethod=marker
 au BufNewFile,BufRead *.as set filetype=actionscript
@@ -262,21 +213,15 @@ au BufRead,BufNewFile *.profile set filetype=php
 au BufRead,BufNewFile *.inc set filetype=php
 au BufRead,BufNewFile *.tpl set filetype=php
 au BufRead,BufNewFile *.md set filetype=markdown 
-
 " ------------------------------------------------------------------------------
-"   Plugins                                                                 {{{1
+" {{{1 Plugins
 " ------------------------------------------------------------------------------
-"  Indentguides                                                             {{{2  
-" ------------------------------------------------------------------------------
-
+" {{{2 Indentguides
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
-
 " ------------------------------------------------------------------------------
-"  Tags                                                                     {{{2
-" ------------------------------------------------------------------------------
-
+" {{{2 Tags
 set tags=./tags,tags,~/Dropbox/lib/php/tags
 let Tlist_Ctags_Cmd = "/opt/local/bin/ctags --langmap=php:.install.inc.module.theme.php --php-kinds=cdfi --languages=php"
 let Tlist_WinWidth = 25
@@ -285,50 +230,30 @@ let tlist_php_settings = 'php;c:class;d:constant;f:function'
 noremap <Leader>c1 :TlistToggle<CR>
 noremap <Leader>cr :!/opt/local/bin/ctags -R .<CR>
 noremap <Leader>cd :!/opt/local/bin/ctags --langmap=php:.engine.inc.module.theme.php --php-kinds=cdfi --languages=php --recurse<CR>
-
 " ------------------------------------------------------------------------------
-"  Buffexplorer                                                             {{{2  
-" ------------------------------------------------------------------------------
-
+" {{{2 Buffexplorer
 let g:bufExplorerShowRelativePath=1
 let g:bufExplorerSortBy='mru'
- 
 " ------------------------------------------------------------------------------
-"  Command-T                                                                {{{2
-" ------------------------------------------------------------------------------
-
+" {{{2 Command-T
 let g:CommandTMaxHeight = 15
 set wildignore+=*.o,*.obj,.git,*.pyc
-
 " ------------------------------------------------------------------------------
-"  Yankring                                                                 {{{2  
-" ------------------------------------------------------------------------------
-
+" {{{2 Yankring
 let g:yankring_history_dir='$HOME/.vim'
-
 " ------------------------------------------------------------------------------
-"  Project                                                                  {{{2  
-" ------------------------------------------------------------------------------
-
+" {{{2 Project
 let g:proj_flags='st'
 let g:proj_window_increment=25
-
 " ------------------------------------------------------------------------------
-"   SuperTab                                                                {{{2  
+" {{{2 SuperTab
+" Currently disabled in favor of AutoComplPop 
+" let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 " ------------------------------------------------------------------------------
-
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-
-" ------------------------------------------------------------------------------
-"   Gundo                                                                   {{{2  
-" ------------------------------------------------------------------------------
-
+" {{{2 Gundo
 nnoremap <leader>g :GundoToggle<CR>
-
 " ------------------------------------------------------------------------------
-"   VimDebugger                                                             {{{2  
-" ------------------------------------------------------------------------------
-
+" {{{2 VimDebugger
 noremap <F11> :DbgStepInto<CR>
 noremap <F10> :DbgStepOver<CR>
 noremap <S-F11> :DbgStepOut<CR>
@@ -336,22 +261,22 @@ noremap <F5> :DbgRun<CR>
 noremap <S-F5> :DbgDetach<CR>
 noremap <F8> :DbgToggleBreakpoint<CR>
 let g:VCSCommandVCSTypeOverride = [ [ '\/si\/core\/', 'git' ] ]
-
 " ------------------------------------------------------------------------------
-"   AutoComplPop                                                            {{{2  
-" ------------------------------------------------------------------------------
+" {{{2 AutoComplPop
 let g:acp_enableAtStartup = 1
 let g:acp_completeoptPreview = 1
 "let g:acp_completeOption = ".,w,b,k,t,i"
 let g:acp_behaviorSnipmateLength = 1
-
 " ------------------------------------------------------------------------------
-"   Language Specific                                                       {{{1
 " ------------------------------------------------------------------------------
-"   Phpcs                                                                   {{{2  
-"   @see:
-"   http://www.koch.ro/blog/index.php?/archives/62-Integrate-PHP-CodeSniffer-in-VIM.html
+" {{{2 Pathogen                                                                 
+source ~/.vim/bundle/pathogen/autoload/pathogen.vim
+call pathogen#infect()
+" {{{1 Language Specific
 " ------------------------------------------------------------------------------
+" {{{2 PHP
+"  @see:
+"  http://www.koch.ro/blog/index.php?/archives/62-Integrate-PHP-CodeSniffer-in-VIM.html
 function! RunPhpcs()
     let l:filename=@%
     let l:phpcs_output=system('/opt/local/bin/phpcs --report=csv --standard=Zend '.l:filename)
@@ -360,15 +285,9 @@ function! RunPhpcs()
     cexpr l:phpcs_list
     cwindow
 endfunction
-
-"set errorformat+="%f"\\,%l\\,%c\\,%t%*[a-zA-Z]\\,"%m"
-set errorformat+=\"%f\"\\,%l\\,%c\\,%t%*[a-zA-Z]\\,\"%m\"\\,%*[a-zA-Z0-9_.-]
 command! Phpcs execute RunPhpcs()
 nnoremap <leader>ps :Phpcs<CR>
 
-" ------------------------------------------------------------------------------
-"   PHP Specific                                                            {{{2
-" ------------------------------------------------------------------------------
 au FileType php set omnifunc=phpcomplete#CompletePHP
 au BufRead,BufNewFile *.php set foldlevel=1
 au BufRead,BufNewFile *.module set foldlevel=1
@@ -378,11 +297,8 @@ let php_noShortTags = 1
 let php_sql_query=1                                                                                        
 let php_htmlInStrings=1
 let g:php_folding='2'
-
 " ------------------------------------------------------------------------------
-"  Folding for JS                                                           {{{2
-" ------------------------------------------------------------------------------
-
+" {{{2 JS
 function! JavaScriptFold() 
     setl foldmethod=syntax
     setl foldlevelstart=1
@@ -397,7 +313,7 @@ au FileType javascript call JavaScriptFold()
 au FileType javascript setl fen
 
 " ------------------------------------------------------------------------------
-"  Ideas and inspiration:                                                   {{{2
+" {{{1 Ideas and inspiration
 "
 " Matt Wozniski: https://github.com/godlygeek/vim-files/blob/master/.vimrc
 " Steve Losh:    https://github.com/sjl/dotfiles/tree/master/vim
