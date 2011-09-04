@@ -99,3 +99,12 @@
 [submodule "bundle/AutoComplPop"]
 	path = bundle/AutoComplPop
 	url = https://github.com/vim-scripts/AutoComplPop.git
+[submodule "bundle/color-blackboard"]
+	path = bundle/color-blackboard
+	url = https://github.com/nelstrom/vim-blackboard
+[submodule "bundle/hex-highlight"]
+	path = bundle/hex-highlight
+	url = https://github.com/vim-scripts/hexHighlight.vim.git
+[submodule "bundle/unimpaired"]
+	path = bundle/unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git

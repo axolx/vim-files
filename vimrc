@@ -105,7 +105,7 @@ if has("autocmd")
     autocmd FileType css set smartindent
     autocmd FileType xhtml,html set formatoptions+=tl
     "autocmd BufWritePost *.less exe '!lessc ' . shellescape(expand('<afile>')) . ' ' . shellescape(expand('<afile>:r')) . '.css'
-    autocmd BufReadPost *.less exe 'set ft=css'
+    autocmd BufReadPost *.less exe 'set ft=less'
 endif
 
 if has("autocmd")
@@ -174,6 +174,15 @@ function! HasPaste()
         return ''
     endif
 endfunction
+
+function! ToggleBackground()
+    if &background == "light"
+        set background=dark
+    else
+        set background=light
+    endif
+endfunction
+
 " ------------------------------------------------------------------------------
 " {{{2 Mappings
 let mapleader = '\'
@@ -182,7 +191,7 @@ noremap <silent> <Leader>s :call ToggleSpell()<CR>
 cnoremap <C-a> <S-Left>
 cnoremap <C-s> <S-Right>
 imap jj <Esc>
-noremap <Leader>c :close<CR>
+noremap <Leader>cc :close<CR>
 noremap <Leader>m :MarksBrowser<CR>
 noremap <Leader>r :MRU<CR>
 noremap <Leader>f0 :set fdl=0<CR>
@@ -195,8 +204,8 @@ noremap <Leader>abd :Kbbd<CR>
 noremap <Leader>nt :NERDTree<CR>
 noremap <Leader>nf :NERDTreeFind<CR>
 noremap <Leader>ys :YRShow<CR>
-noremap <leader>ev :tabedit $MYVIMRC<CR>
 noremap <leader>cts :CommandTFlush<CR>
+noremap <Leader>bb :call ToggleBackground()<CR> 
 " write file as sudo
 cmap w!! w !sudo tee % >/dev/null
 
