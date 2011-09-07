@@ -281,6 +281,12 @@ let g:acp_behaviorSnipmateLength = 1
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 " ------------------------------------------------------------------------------
+" {{{2 Commentary
+set commentstring=//\ %s
+" Custom comments per file type: 
+autocmd FileType apache set commentstring=#\ %s
+
+" ------------------------------------------------------------------------------
 " {{{2 Pathogen                                                                 
 source ~/.vim/bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
