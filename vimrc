@@ -130,10 +130,6 @@ let g:perl_fold_blocks = 1
 let g:bufExplorerSortBy='fullpath'
 let g:Perl_Root= 'Plugin.&Perl.'
 let g:proj_flags='g'
-if filereadable('~/local/bin/svn')
-    let g:VCSCommandSVNExec='~/local/bin/svn'
-endif
-let g:VCSCommandSVNDiffOpt='w'
 let g:tlist_javascript_settings = 'javascript;s:string;a:array;o:object;f:function'
 set errorformat+=\"%f\"\\,%l\\,%c\\,%t%*[a-zA-Z]\\,\"%m\"\\,%*[a-zA-Z0-9_.-]
 
@@ -186,26 +182,31 @@ endfunction
 " ------------------------------------------------------------------------------
 " {{{2 Mappings
 let mapleader = '\'
-noremap <silent> <Leader>h :call ToggleHLSearch()<CR> 
-noremap <silent> <Leader>s :call ToggleSpell()<CR> 
 cnoremap <C-a> <S-Left>
 cnoremap <C-s> <S-Right>
 imap jj <Esc>
-noremap <Leader>cc :close<CR>
-noremap <Leader>m :MarksBrowser<CR>
-noremap <Leader>r :MRU<CR>
-noremap <Leader>f0 :set fdl=0<CR>
-noremap <Leader>f1 :set fdl=1<CR>
-noremap <Leader>f2 :set fdl=2<CR>
-noremap <Leader>ft :let &foldlevel=foldlevel('.')<CR>
-noremap <Leader>v :BufExplorer<CR>
-noremap <Leader>as ^y$:!<C-R>"<CR>
+noremap <Leader>m   :MarksBrowser<CR>
+noremap <Leader>r   :MRU<CR>
+noremap <Leader>as   ^y$:!<C-R>"<CR>
 noremap <Leader>abd :Kbbd<CR>
-noremap <Leader>nt :NERDTree<CR>
-noremap <Leader>nf :NERDTreeFind<CR>
-noremap <Leader>ys :YRShow<CR>
+noremap <Leader>bb  :call ToggleBackground()<CR> 
+noremap <Leader>bc  :close<CR>
+noremap <Leader>lo  :lopen<CR>
+noremap <Leader>lc  :lclose<CR>
+noremap <Leader>po  :popen<CR>
+noremap <Leader>pc  :pclose<CR>
 noremap <leader>cts :CommandTFlush<CR>
-noremap <Leader>bb :call ToggleBackground()<CR> 
+noremap <Leader>f0  :set fdl=0<CR>
+noremap <Leader>f1  :set fdl=1<CR>
+noremap <Leader>f2  :set fdl=2<CR>
+noremap <Leader>ft  :let &foldlevel=foldlevel('.')<CR>
+noremap <Leader>i   :IndentGuidesToggle<CR>
+noremap <Leader>n   :Ex<CR>
+noremap <Leader>h   :call ToggleHLSearch()<CR> 
+noremap <Leader>s   :call ToggleSpell()<CR> 
+noremap <Leader>v   :BufExplorer<CR>
+noremap <Leader>ys  :YRShow<CR>
+
 " write file as sudo
 cmap w!! w !sudo tee % >/dev/null
 
@@ -226,9 +227,9 @@ au BufRead,BufNewFile *.md set filetype=markdown
 " {{{1 Plugins
 " ------------------------------------------------------------------------------
 " {{{2 Indentguides
-let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
+" let g:indent_guides_enable_on_vim_startup = 1
 " ------------------------------------------------------------------------------
 " {{{2 Tags
 set tags=./tags,tags,~/Dropbox/lib/php/tags
@@ -269,7 +270,6 @@ noremap <S-F11> :DbgStepOut<CR>
 noremap <F5> :DbgRun<CR>
 noremap <S-F5> :DbgDetach<CR>
 noremap <F8> :DbgToggleBreakpoint<CR>
-let g:VCSCommandVCSTypeOverride = [ [ '\/si\/core\/', 'git' ] ]
 " ------------------------------------------------------------------------------
 " {{{2 AutoComplPop
 let g:acp_enableAtStartup = 1
@@ -285,6 +285,12 @@ let g:syntastic_auto_loc_list=1
 set commentstring=//\ %s
 " Custom comments per file type: 
 autocmd FileType apache set commentstring=#\ %s
+
+" ------------------------------------------------------------------------------
+" {{{2 VCSCommand
+let g:VCSCommandDisableMappings=1
+let g:VCSCommandVCSTypeOverride = [ [ '\/si\/core\/', 'git' ] ]
+let g:VCSCommandSVNDiffOpt='w'
 
 " ------------------------------------------------------------------------------
 " {{{2 Pathogen                                                                 
@@ -328,6 +334,7 @@ function! JavaScriptFold()
 endfunction
 au FileType javascript call JavaScriptFold()
 au FileType javascript setl fen
+au BufRead,BufNewFile *.json set ft=javascript
 
 " ------------------------------------------------------------------------------
 " {{{1 Ideas and inspiration
