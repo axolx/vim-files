@@ -335,6 +335,9 @@ endfunction
 au FileType javascript call JavaScriptFold()
 au FileType javascript setl fen
 au BufRead,BufNewFile *.json set ft=javascript
+" ------------------------------------------------------------------------------
+" {{{2 Git
+au FileType gitcommit set nofoldenable
 
 " ------------------------------------------------------------------------------
 " {{{1 Ideas and inspiration
