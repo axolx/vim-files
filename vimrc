@@ -239,7 +239,7 @@ let Tlist_Process_File_Always = 1
 let tlist_php_settings = 'php;c:class;d:constant;f:function'
 noremap <Leader>c1 :TlistToggle<CR>
 noremap <Leader>cr :!/opt/local/bin/ctags -R .<CR>
-noremap <Leader>cd :!/opt/local/bin/ctags --langmap=php:.engine.inc.module.theme.php --php-kinds=cdfi --languages=php --recurse<CR>
+noremap <Leader>cd :!/opt/local/bin/ctags --langmap=php:.engine.inc.module.theme.php.test --php-kinds=cdfi --languages=php --recurse<CR>
 " ------------------------------------------------------------------------------
 " {{{2 Buffexplorer
 let g:bufExplorerShowRelativePath=1
@@ -314,7 +314,8 @@ nnoremap <leader>ps :Phpcs<CR>
 au FileType php set omnifunc=phpcomplete#CompletePHP
 au BufRead,BufNewFile *.php set foldlevel=1
 au BufRead,BufNewFile *.module set foldlevel=1
-au BufWrite *.php :call DeleteTrailingWS()
+" au BufWrite *.php :call DeleteTrailingWS()
+au FileType php au BufWrite <buffer> :call DeleteTrailingWS()
 let php_folding = 1
 let php_noShortTags = 1
 let php_sql_query=1                                                                                        
