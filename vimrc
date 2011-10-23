@@ -96,6 +96,7 @@ set infercase
 " colorscheme xterm16
 " colorscheme inkpot
 colorscheme default
+set noantialias
 " ------------------------------------------------------------------------------
 " {{{2 Autocommands                                                             
 if has("autocmd")
@@ -202,10 +203,16 @@ noremap <Leader>f2  :set fdl=2<CR>
 noremap <Leader>ft  :let &foldlevel=foldlevel('.')<CR>
 noremap <Leader>i   :IndentGuidesToggle<CR>
 noremap <Leader>n   :Ex<CR>
-noremap <Leader>h   :call ToggleHLSearch()<CR> 
-noremap <Leader>s   :call ToggleSpell()<CR> 
+noremap <Leader>h   :call ToggleHLSearch()<CR>
+" noremap <Leader>s   :call ToggleSpell()<CR> 
 noremap <Leader>v   :BufExplorer<CR>
+" noremap <Leader>v   :CtrlPBuffer<CR>
+noremap <Leader>t   :CtrlP<CR>
 noremap <Leader>ys  :YRShow<CR>
+noremap <Leader>s4  :set sw=4<CR>
+noremap <Leader>s2  :set sw=2<CR>
+inoremap jk <esc>
+"inoremap <esc> <nop> " disables esc for switching back to normal mode
 
 " write file as sudo
 cmap w!! w !sudo tee % >/dev/null
@@ -249,6 +256,11 @@ let g:bufExplorerSortBy='mru'
 let g:CommandTMaxHeight = 15
 set wildignore+=*.o,*.obj,.git,*.pyc
 " ------------------------------------------------------------------------------
+" {{{2 ControlP
+let g:ctrlp_map = '<c-p>'
+noremap <C-p> :Ctrlp<cr>
+
+" ------------------------------------------------------------------------------
 " {{{2 Yankring
 let g:yankring_history_dir='$HOME/.vim'
 " ------------------------------------------------------------------------------
@@ -259,6 +271,7 @@ let g:proj_window_increment=25
 " {{{2 SuperTab
 " Currently disabled in favor of AutoComplPop 
 " let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+let g:SuperTabCrMapping = 0
 " ------------------------------------------------------------------------------
 " {{{2 Gundo
 nnoremap <leader>g :GundoToggle<CR>
@@ -285,12 +298,14 @@ let g:syntastic_auto_loc_list=1
 set commentstring=//\ %s
 " Custom comments per file type: 
 autocmd FileType apache set commentstring=#\ %s
-
 " ------------------------------------------------------------------------------
 " {{{2 VCSCommand
 let g:VCSCommandDisableMappings=1
 let g:VCSCommandVCSTypeOverride = [ [ '\/si\/core\/', 'git' ] ]
 let g:VCSCommandSVNDiffOpt='w'
+" ------------------------------------------------------------------------------
+" {{{2 delimitMate
+let delimitMate_expand_cr = 1
 
 " ------------------------------------------------------------------------------
 " {{{2 Pathogen                                                                 
@@ -339,7 +354,10 @@ au BufRead,BufNewFile *.json set ft=javascript
 " ------------------------------------------------------------------------------
 " {{{2 Git
 au FileType gitcommit set nofoldenable
-
+" ------------------------------------------------------------------------------
+" {{{2 Python
+au FileType pythong set foldenable
+au FileType php au BufWrite <buffer> :call DeleteTrailingWS()
 " ------------------------------------------------------------------------------
 " {{{1 Ideas and inspiration
 "
