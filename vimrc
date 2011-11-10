@@ -29,6 +29,7 @@ set showmatch
 set matchtime=2
 set wildmenu                 " command line completion shows options in menu
 set wildmode=list:longest,full
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.so,*.o,*.pyc,.DS_Store
 set magic                    " set magic on, for regular expressions
 set switchbuf=useopen
 set number                   " not sure why, but keep this one last or it won't work 
@@ -44,6 +45,9 @@ set encoding=utf-8
 set fileformats=unix,mac,dos
 set undofile
 set path=$PWD/**             " http://vim.wikia.com/wiki/VimTip1146
+set list
+set listchars=tab:▸\ ,trail:· " Highlight extra whitespace
+
 filetype on
 syntax on
 filetype plugin indent on
@@ -117,7 +121,7 @@ if has("autocmd")
  augroup END
 endif
 " {{{2 @todo Oragnize me!
-let g:netrw_liststyle = 1
+let g:
 let g:netrw_hide = 1
 let g:netrw_winsize = 20
 let g:netrw_browse_split = 0
@@ -254,11 +258,13 @@ let g:bufExplorerSortBy='mru'
 " ------------------------------------------------------------------------------
 " {{{2 Command-T
 let g:CommandTMaxHeight = 15
-set wildignore+=*.o,*.obj,.git,*.pyc
 " ------------------------------------------------------------------------------
 " {{{2 ControlP
-let g:ctrlp_map = '<c-p>'
-noremap <C-p> :Ctrlp<cr>
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_by_filename = 0
+let g:ctrlp_match_window_bottom = 1
+let g:ctrlp_open_new_file = 0
+let g:ctrlp_open_multi = 0
 
 " ------------------------------------------------------------------------------
 " {{{2 Yankring
@@ -304,10 +310,6 @@ let g:VCSCommandDisableMappings=1
 let g:VCSCommandVCSTypeOverride = [ [ '\/si\/core\/', 'git' ] ]
 let g:VCSCommandSVNDiffOpt='w'
 " ------------------------------------------------------------------------------
-" {{{2 delimitMate
-let delimitMate_expand_cr = 1
-
-" ------------------------------------------------------------------------------
 " {{{2 Pathogen                                                                 
 source ~/.vim/bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
@@ -333,7 +335,7 @@ au BufRead,BufNewFile *.module set foldlevel=1
 au FileType php au BufWrite <buffer> :call DeleteTrailingWS()
 let php_folding = 1
 let php_noShortTags = 1
-let php_sql_query=1                                                                                        
+let php_sql_query=1
 let php_htmlInStrings=1
 let g:php_folding='2'
 " ------------------------------------------------------------------------------
@@ -358,6 +360,9 @@ au FileType gitcommit set nofoldenable
 " {{{2 Python
 au FileType pythong set foldenable
 au FileType php au BufWrite <buffer> :call DeleteTrailingWS()
+" ------------------------------------------------------------------------------
+" {{{2 Netrw
+au FileType netrw set nolist
 " ------------------------------------------------------------------------------
 " {{{1 Ideas and inspiration
 "

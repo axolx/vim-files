@@ -1,7 +1,7 @@
-set background=light
+set background=dark
 "colorscheme inkpot           " Other good ones: vibrantink, lettuce, moria, solarized
 colorscheme solarized
-set antialias
+set noantialias
 set cursorline
 set lines=50                 " Makes gui win 50 chars tall
 set columns=85
