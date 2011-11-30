@@ -32,7 +32,7 @@ set wildmode=list:longest,full
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.so,*.o,*.pyc,.DS_Store
 set magic                    " set magic on, for regular expressions
 set switchbuf=useopen
-set number                   " not sure why, but keep this one last or it won't work 
+set number                   " not sure why, but keep this one last or it won't work
                              " on current gvim's setup
 set dictionary=/usr/share/dict/words
 set laststatus=2             "always show status line
@@ -102,7 +102,7 @@ set infercase
 colorscheme default
 set noantialias
 " ------------------------------------------------------------------------------
-" {{{2 Autocommands                                                             
+" {{{2 Autocommands
 if has("autocmd")
     " When editing a file, always jump to the last cursor position
     autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
@@ -120,8 +120,8 @@ if has("autocmd")
   autocmd bufwritepost .vimrc source ~/.gvimrc
  augroup END
 endif
+
 " {{{2 @todo Oragnize me!
-let g:
 let g:netrw_hide = 1
 let g:netrw_winsize = 20
 let g:netrw_browse_split = 0
@@ -155,7 +155,7 @@ function! ToggleSpell()
         set spell
     endif
 endfunction
-com! Kwbd let kwbd_bn= bufnr("%")|enew|exe "bdel ".kwbd_bn|unlet kwbd_bn 
+" com! Kwbd let kwbd_bn= bufnr("%")|enew|exe "bdel ".kwbd_bn|unlet kwbd_bn
 
 function! DeleteTrailingWS()
   exe "normal mz"
@@ -194,7 +194,7 @@ noremap <Leader>m   :MarksBrowser<CR>
 noremap <Leader>r   :MRU<CR>
 noremap <Leader>as   ^y$:!<C-R>"<CR>
 noremap <Leader>abd :Kbbd<CR>
-noremap <Leader>bb  :call ToggleBackground()<CR> 
+noremap <Leader>bb  :call ToggleBackground()<CR>
 noremap <Leader>bc  :close<CR>
 noremap <Leader>lo  :lopen<CR>
 noremap <Leader>lc  :lclose<CR>
@@ -208,7 +208,7 @@ noremap <Leader>ft  :let &foldlevel=foldlevel('.')<CR>
 noremap <Leader>i   :IndentGuidesToggle<CR>
 noremap <Leader>n   :Ex<CR>
 noremap <Leader>h   :call ToggleHLSearch()<CR>
-" noremap <Leader>s   :call ToggleSpell()<CR> 
+" noremap <Leader>s   :call ToggleSpell()<CR>
 noremap <Leader>v   :BufExplorer<CR>
 " noremap <Leader>v   :CtrlPBuffer<CR>
 noremap <Leader>t   :CtrlP<CR>
@@ -233,7 +233,7 @@ au BufRead,BufNewFile *.module set filetype=php
 au BufRead,BufNewFile *.profile set filetype=php
 au BufRead,BufNewFile *.inc set filetype=php
 au BufRead,BufNewFile *.tpl set filetype=php
-au BufRead,BufNewFile *.md set filetype=markdown 
+au BufRead,BufNewFile *.md set filetype=markdown
 " ------------------------------------------------------------------------------
 " {{{1 Plugins
 " ------------------------------------------------------------------------------
@@ -275,7 +275,7 @@ let g:proj_flags='st'
 let g:proj_window_increment=25
 " ------------------------------------------------------------------------------
 " {{{2 SuperTab
-" Currently disabled in favor of AutoComplPop 
+" Currently disabled in favor of AutoComplPop
 " let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 let g:SuperTabCrMapping = 0
 " ------------------------------------------------------------------------------
@@ -302,7 +302,7 @@ let g:syntastic_auto_loc_list=1
 " ------------------------------------------------------------------------------
 " {{{2 Commentary
 set commentstring=//\ %s
-" Custom comments per file type: 
+" Custom comments per file type:
 autocmd FileType apache set commentstring=#\ %s
 " ------------------------------------------------------------------------------
 " {{{2 VCSCommand
@@ -310,7 +310,7 @@ let g:VCSCommandDisableMappings=1
 let g:VCSCommandVCSTypeOverride = [ [ '\/si\/core\/', 'git' ] ]
 let g:VCSCommandSVNDiffOpt='w'
 " ------------------------------------------------------------------------------
-" {{{2 Pathogen                                                                 
+" {{{2 Pathogen
 source ~/.vim/bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 " {{{1 Language Specific
@@ -340,7 +340,7 @@ let php_htmlInStrings=1
 let g:php_folding='2'
 " ------------------------------------------------------------------------------
 " {{{2 JS
-function! JavaScriptFold() 
+function! JavaScriptFold()
     setl foldmethod=syntax
     setl foldlevelstart=1
     syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
