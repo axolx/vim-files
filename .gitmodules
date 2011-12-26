@@ -37,16 +37,13 @@
 	url = git://github.com/groenewege/vim-less.git
 [submodule "bundle/matchit"]
 	path = bundle/matchit
-	url = git://github.com/mhz/vim-matchit.git
+	url = git://github.com/edsono/vim-matchit.git
 [submodule "bundle/mru"]
 	path = bundle/mru
 	url = git://github.com/ornicar/vim-mru.git
 [submodule "bundle/netrw"]
 	path = bundle/netrw
 	url = git://github.com/vim-scripts/netrw.vim.git
-[submodule "bundle/PIV"]
-	path = bundle/PIV
-	url = git://github.com/spf13/PIV.git
 [submodule "bundle/pathogen"]
 	path = bundle/pathogen
 	url = git://github.com/tpope/vim-pathogen.git
