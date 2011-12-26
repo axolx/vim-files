@@ -29,7 +29,7 @@ set showmatch
 set matchtime=2
 set wildmenu                 " command line completion shows options in menu
 set wildmode=list:longest,full
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.so,*.o,*.pyc,.DS_Store
+set wildignore+=*/.hg/*,*/.svn/*,*.so,*.o,*.pyc,.DS_Store
 set magic                    " set magic on, for regular expressions
 set switchbuf=useopen
 set number                   " not sure why, but keep this one last or it won't work
@@ -196,6 +196,7 @@ noremap <Leader>as   ^y$:!<C-R>"<CR>
 noremap <Leader>abd :Kbbd<CR>
 noremap <Leader>bb  :call ToggleBackground()<CR>
 noremap <Leader>bc  :close<CR>
+noremap <Leader>bd  :bdelete<CR>
 noremap <Leader>lo  :lopen<CR>
 noremap <Leader>lc  :lclose<CR>
 noremap <Leader>po  :popen<CR>
