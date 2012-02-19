@@ -100,7 +100,7 @@ set infercase
 " colorscheme xterm16
 " colorscheme inkpot
 colorscheme default
-set noantialias
+set antialias
 " ------------------------------------------------------------------------------
 " {{{2 Autocommands
 if has("autocmd")
@@ -262,7 +262,7 @@ let g:CommandTMaxHeight = 15
 " ------------------------------------------------------------------------------
 " {{{2 ControlP
 let g:ctrlp_working_path_mode = 0
-let g:ctrlp_by_filename = 0
+let g:ctrlp_by_filename = 1
 let g:ctrlp_match_window_bottom = 1
 let g:ctrlp_open_new_file = 0
 let g:ctrlp_open_multi = 0
@@ -359,8 +359,11 @@ au BufRead,BufNewFile *.json set ft=javascript
 au FileType gitcommit set nofoldenable
 " ------------------------------------------------------------------------------
 " {{{2 Python
-au FileType pythong set foldenable
-au FileType php au BufWrite <buffer> :call DeleteTrailingWS()
+au FileType python set foldenable
+au FileType python au BufWrite <buffer> :call DeleteTrailingWS()
+au FileType python set foldmethod=indent
+" {{{2 Vim
+au FileType vim au BufWrite <buffer> :call DeleteTrailingWS()
 " ------------------------------------------------------------------------------
 " {{{2 Netrw
 au FileType netrw set nolist
