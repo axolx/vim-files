@@ -50,15 +50,9 @@
 [submodule "bundle/project"]
 	path = bundle/project
 	url = git://github.com/shemerey/vim-project.git
-[submodule "bundle/vcscommand"]
-	path = bundle/vcscommand
-	url = git://repo.or.cz/vcscommand
 [submodule "bundle/taglist"]
 	path = bundle/taglist
 	url = git://github.com/vim-scripts/taglist.vim.git
-[submodule "bundle/xmledit"]
-	path = bundle/xmledit
-	url = git://github.com/sukima/xmledit.git
 [submodule "bundle/supertab-continued"]
 	path = bundle/supertab-continued
 	url = git://github.com/vim-scripts/SuperTab-continued..git
