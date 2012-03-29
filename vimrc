@@ -15,7 +15,6 @@ set mat=2                    " How many tenths of a second to blink
 set nostartofline
 set textwidth=80
 set columns=85
-set colorcolumn=+2,+3,+4,+5,+6,+7,+8,+9,+10,+11,+12,+13,+14,+15,+16,+17,+18,+19,+20
 set nowrap
 set linebreak                " wrap at end of word
 set showbreak=+              "show char in front of wraped lines
@@ -184,6 +183,13 @@ function! ToggleBackground()
     endif
 endfunction
 
+function! ToggleWidthMargin()
+    if &colorcolumn == ""
+        set colorcolumn=+2,+3,+4,+5,+6,+7,+8,+9,+10,+11,+12,+13,+14,+15,+16,+17,+18,+19,+20
+    else
+        set colorcolumn=
+    endif
+endfunction
 " ------------------------------------------------------------------------------
 " {{{2 Mappings
 let mapleader = '\'
@@ -191,7 +197,6 @@ cnoremap <C-a> <S-Left>
 cnoremap <C-s> <S-Right>
 imap jj <Esc>
 noremap <Leader>m   :MarksBrowser<CR>
-noremap <Leader>r   :MRU<CR>
 noremap <Leader>as   ^y$:!<C-R>"<CR>
 noremap <Leader>abd :Kbbd<CR>
 noremap <Leader>bb  :call ToggleBackground()<CR>
@@ -212,10 +217,12 @@ noremap <Leader>h   :call ToggleHLSearch()<CR>
 " noremap <Leader>s   :call ToggleSpell()<CR>
 noremap <Leader>v   :BufExplorer<CR>
 " noremap <Leader>v   :CtrlPBuffer<CR>
-noremap <Leader>t   :CtrlP<CR>
+noremap <Leader>t   :CtrlPMRU<CR>
 noremap <Leader>ys  :YRShow<CR>
 noremap <Leader>s4  :set sw=4<CR>
 noremap <Leader>s2  :set sw=2<CR>
+noremap <Leader>w  :call ToggleWidthMargin()<CR>
+noremap <Leader>q  :silent !qlmanage -p %<CR>
 inoremap jk <esc>
 "inoremap <esc> <nop> " disables esc for switching back to normal mode
 
