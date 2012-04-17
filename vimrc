@@ -87,6 +87,7 @@ set undoreload=10000         " maximum number lines to save for undo on a buffer
 set laststatus=2             " Always hide the statusline
 " Format the statusline
 " set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L:%c
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%{SL('CapsLockStatusline')}%y%{SL('fugitive#statusline')}%#ErrorMsg#%{SL('SyntasticStatuslineFlag')}%*%=%-14.(%l,%c%V%)\ %P
 " ------------------------------------------------------------------------------
 " {{{2 Completion
 set completeopt=menu,longest,preview
@@ -190,6 +191,14 @@ function! ToggleWidthMargin()
         set colorcolumn=
     endif
 endfunction
+
+function! SL(function)
+  if exists('*'.a:function)
+    return call(a:function,[])
+  else
+    return ''
+  endif
+endfunction
 " ------------------------------------------------------------------------------
 " {{{2 Mappings
 let mapleader = '\'
@@ -217,12 +226,15 @@ noremap <Leader>h   :call ToggleHLSearch()<CR>
 " noremap <Leader>s   :call ToggleSpell()<CR>
 noremap <Leader>v   :BufExplorer<CR>
 " noremap <Leader>v   :CtrlPBuffer<CR>
-noremap <Leader>t   :CtrlPMRU<CR>
+noremap <Leader>r   :CtrlPMRU<CR>
+noremap <Leader>t   :CtrlP<CR>
 noremap <Leader>ys  :YRShow<CR>
 noremap <Leader>s4  :set sw=4<CR>
 noremap <Leader>s2  :set sw=2<CR>
 noremap <Leader>w  :call ToggleWidthMargin()<CR>
-noremap <Leader>q  :silent !qlmanage -p %<CR>
+" noremap <Leader>q  :silent !qlmanage -p %<CR>
+nnoremap <leader>q :silent !open -a Marked.app '%:p'<cr>
+
 inoremap jk <esc>
 "inoremap <esc> <nop> " disables esc for switching back to normal mode
 
@@ -237,9 +249,9 @@ cmap w!! w !sudo tee % >/dev/null
 au BufRead,BufNewFile *.tt2 set filetype=tt2html
 au BufRead,BufNewFile *.tt2 set foldmethod=marker
 au BufNewFile,BufRead *.as set filetype=actionscript
-au BufRead,BufNewFile *.module set filetype=php
-au BufRead,BufNewFile *.profile set filetype=php
-au BufRead,BufNewFile *.inc set filetype=php
+"au BufRead,BufNewFile *.module set filetype=php
+"au BufRead,BufNewFile *.profile set filetype=php
+"au BufRead,BufNewFile *.inc set filetype=php
 au BufRead,BufNewFile *.tpl set filetype=php
 au BufRead,BufNewFile *.md set filetype=markdown
 " ------------------------------------------------------------------------------
@@ -251,7 +263,8 @@ let g:indent_guides_guide_size = 1
 " let g:indent_guides_enable_on_vim_startup = 1
 " ------------------------------------------------------------------------------
 " {{{2 Tags
-set tags=./tags,tags,~/Dropbox/lib/php/tags
+" set tags=./tags,tags,~/Dropbox/lib/php/tags
+set tags=./tags,tags
 let Tlist_Ctags_Cmd = "/opt/local/bin/ctags --langmap=php:.install.inc.module.theme.php --php-kinds=cdfi --languages=php"
 let Tlist_WinWidth = 25
 let Tlist_Process_File_Always = 1
@@ -269,7 +282,7 @@ let g:CommandTMaxHeight = 15
 " ------------------------------------------------------------------------------
 " {{{2 ControlP
 let g:ctrlp_working_path_mode = 0
-let g:ctrlp_by_filename = 1
+let g:ctrlp_by_filename = 0
 let g:ctrlp_match_window_bottom = 1
 let g:ctrlp_open_new_file = 0
 let g:ctrlp_open_multi = 0
@@ -306,7 +319,7 @@ let g:acp_behaviorSnipmateLength = 1
 " ------------------------------------------------------------------------------
 " {{{2 Syntastic
 let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=1
+let g:syntastic_auto_loc_list=0
 " ------------------------------------------------------------------------------
 " {{{2 Commentary
 set commentstring=//\ %s
@@ -338,7 +351,6 @@ nnoremap <leader>ps :Phpcs<CR>
 
 au FileType php set omnifunc=phpcomplete#CompletePHP
 au BufRead,BufNewFile *.php set foldlevel=1
-au BufRead,BufNewFile *.module set foldlevel=1
 " au BufWrite *.php :call DeleteTrailingWS()
 au FileType php au BufWrite <buffer> :call DeleteTrailingWS()
 let php_folding = 1
@@ -362,6 +374,7 @@ au FileType javascript call JavaScriptFold()
 au FileType javascript setl fen
 au BufRead,BufNewFile *.json set ft=javascript
 " ------------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 " {{{2 Git
 au FileType gitcommit set nofoldenable
 " ------------------------------------------------------------------------------
@@ -374,6 +387,15 @@ au FileType vim au BufWrite <buffer> :call DeleteTrailingWS()
 " ------------------------------------------------------------------------------
 " {{{2 Netrw
 au FileType netrw set nolist
+" ------------------------------------------------------------------------------
+" {{{2 Drupal
+if has("autocmd")
+  " Drupal *.module and *.install files.
+  augroup module
+    autocmd BufRead,BufNewFile *.module set filetype=drupal
+    autocmd BufRead,BufNewFile *.install set filetype=drupal
+  augroup END
+endif
 " ------------------------------------------------------------------------------
 " {{{1 Ideas and inspiration
 "
