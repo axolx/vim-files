@@ -90,6 +90,7 @@ set laststatus=2             " Always hide the statusline
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%{SL('CapsLockStatusline')}%y%{SL('fugitive#statusline')}%#ErrorMsg#%{SL('SyntasticStatuslineFlag')}%*%=%-14.(%l,%c%V%)\ %P
 " ------------------------------------------------------------------------------
 " {{{2 Completion
+set complete= ".,w,b,t,i"  " :he 'complete'
 set completeopt=menu,longest,preview
 set infercase
 " ------------------------------------------------------------------------------
@@ -297,7 +298,7 @@ let g:proj_window_increment=25
 " ------------------------------------------------------------------------------
 " {{{2 SuperTab
 " Currently disabled in favor of AutoComplPop
-" let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 let g:SuperTabCrMapping = 0
 " ------------------------------------------------------------------------------
 " {{{2 Gundo
@@ -312,9 +313,10 @@ noremap <S-F5> :DbgDetach<CR>
 noremap <F8> :DbgToggleBreakpoint<CR>
 " ------------------------------------------------------------------------------
 " {{{2 AutoComplPop
-let g:acp_enableAtStartup = 1
+let g:acp_enableAtStartup = 0
 let g:acp_completeoptPreview = 1
-"let g:acp_completeOption = ".,w,b,k,t,i"
+let g:acp_completeOption = '.,w,b,t,i' " This has to be set. It won't inherit
+                                       " from :set complete
 let g:acp_behaviorSnipmateLength = 1
 " ------------------------------------------------------------------------------
 " {{{2 Syntastic

@@ -50,9 +50,6 @@
 [submodule "bundle/taglist"]
 	path = bundle/taglist
 	url = git://github.com/vim-scripts/taglist.vim.git
-[submodule "bundle/supertab-continued"]
-	path = bundle/supertab-continued
-	url = git://github.com/vim-scripts/SuperTab-continued..git
 [submodule "bundle/color-solarized"]
 	path = bundle/color-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
@@ -71,9 +68,6 @@
 [submodule "bundle/bufexplorer"]
 	path = bundle/bufexplorer
 	url = git://github.com/markabe/bufexplorer.git
-[submodule "bundle/AutoComplPop"]
-	path = bundle/AutoComplPop
-	url = https://github.com/vim-scripts/AutoComplPop.git
 [submodule "bundle/color-blackboard"]
 	path = bundle/color-blackboard
 	url = https://github.com/nelstrom/vim-blackboard
@@ -95,3 +89,6 @@
 [submodule "bundle/color-mac-classic"]
 	path = bundle/color-mac-classic
 	url = git://github.com/nelstrom/vim-mac-classic-theme.git
+[submodule "bundle/AutoComplPop"]
+	path = bundle/AutoComplPop
+	url = git://github.com/vim-scripts/AutoComplPop.git
