@@ -22,7 +22,7 @@ set nowrapscan
 set ignorecase
 set smartcase                " case insensitive searches become sensitive with capitals
 set foldmethod=syntax
-set nohlsearch               " see hl function & mapping below
+set hlsearch               " see hl function & mapping below
 set incsearch
 set showmatch
 set matchtime=2
@@ -41,11 +41,17 @@ set comments+=n::
 set matchpairs+=<:>
 set diffopt=filler,iwhite
 set encoding=utf-8
+set nobomb                   " do not write utf-8 BOM!
 set fileformats=unix,mac,dos
 set undofile
 set path=$PWD/**             " http://vim.wikia.com/wiki/VimTip1146
 set list
 set listchars=tab:▸\ ,trail:· " Highlight extra whitespace
+
+" Last but not least, allow for local overrides
+if filereadable(expand("~/.vimrc.local"))
+    source ~/.vimrc.local
+endif
 
 filetype on
 syntax on
@@ -287,6 +293,7 @@ let g:ctrlp_by_filename = 0
 let g:ctrlp_match_window_bottom = 1
 let g:ctrlp_open_new_file = 0
 let g:ctrlp_open_multi = 0
+let g:ctrlp_max_height = 20
 
 " ------------------------------------------------------------------------------
 " {{{2 Yankring
@@ -313,7 +320,7 @@ noremap <S-F5> :DbgDetach<CR>
 noremap <F8> :DbgToggleBreakpoint<CR>
 " ------------------------------------------------------------------------------
 " {{{2 AutoComplPop
-let g:acp_enableAtStartup = 0
+let g:acp_enableAtStartup = 1
 let g:acp_completeoptPreview = 1
 let g:acp_completeOption = '.,w,b,t,i' " This has to be set. It won't inherit
                                        " from :set complete
@@ -322,6 +329,7 @@ let g:acp_behaviorSnipmateLength = 1
 " {{{2 Syntastic
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=0
+let g:syntastic_quiet_warnings=1
 " ------------------------------------------------------------------------------
 " {{{2 Commentary
 set commentstring=//\ %s
@@ -407,5 +415,4 @@ endif
 " Tim Pope:      https://github.com/tpope/vimfiles
 " ------------------------------------------------------------------------------
 "
-" vim:fdm=marker
-"
+" vim:fdm=marker:fdl=1
