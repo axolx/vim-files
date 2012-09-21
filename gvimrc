@@ -12,6 +12,7 @@ set guioptions-=T            " turn off toolbar
 
 if has("diff") && &diff
     set columns=165
+    colorscheme inkpot
 endif
 
 if exists('&macatsui')

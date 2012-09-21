@@ -47,6 +47,11 @@ set undofile
 set path=$PWD/**             " http://vim.wikia.com/wiki/VimTip1146
 set list
 set listchars=tab:▸\ ,trail:· " Highlight extra whitespace
+set t_Co=256
+
+" Allow local .vimrc files per directory
+set exrc
+set secure
 
 " Last but not least, allow for local overrides
 if filereadable(expand("~/.vimrc.local"))
@@ -90,24 +95,18 @@ set undolevels=1000          " maximum number of changes that can be undone
 set undoreload=10000         " maximum number lines to save for undo on a buffer reload
 " ------------------------------------------------------------------------------
 " {{{2 Statusline
+" see http://stackoverflow.com/questions/5375240/a-more-useful-statusline-in-vim
 set laststatus=2             " Always hide the statusline
 " Format the statusline
 " set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L:%c
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%{SL('CapsLockStatusline')}%y%{SL('fugitive#statusline')}%#ErrorMsg#%{SL('SyntasticStatuslineFlag')}%*%=%-14.(%l,%c%V%)\ %P
+set statusline  =[%n]
+set statusline +=\ %{&ff}            "file format
+set statusline +=\ %<%.99f\ %h%w%m%r%{SL('CapsLockStatusline')}%y%{SL('fugitive#statusline')}%#ErrorMsg#%{SL('SyntasticStatuslineFlag')}%*%=%-14.(%l,%c%V%)\ %P
 " ------------------------------------------------------------------------------
 " {{{2 Completion
 set complete= ".,w,b,t,i"  " :he 'complete'
 set completeopt=menu,longest,preview
 set infercase
-" ------------------------------------------------------------------------------
-" {{{2 Color
-" colorscheme axolx2
-" colorscheme lettuce
-" colorscheme darkblue
-" colorscheme xterm16
-" colorscheme inkpot
-colorscheme default
-set antialias
 " ------------------------------------------------------------------------------
 " {{{2 Autocommands
 if has("autocmd")
@@ -212,7 +211,6 @@ let mapleader = '\'
 cnoremap <C-a> <S-Left>
 cnoremap <C-s> <S-Right>
 imap jj <Esc>
-noremap <Leader>m   :MarksBrowser<CR>
 noremap <Leader>as   ^y$:!<C-R>"<CR>
 noremap <Leader>abd :Kbbd<CR>
 noremap <Leader>bb  :call ToggleBackground()<CR>
@@ -228,6 +226,7 @@ noremap <Leader>f1  :set fdl=1<CR>
 noremap <Leader>f2  :set fdl=2<CR>
 noremap <Leader>ft  :let &foldlevel=foldlevel('.')<CR>
 noremap <Leader>i   :IndentGuidesToggle<CR>
+noremap <Leader>m   :make<CR>
 noremap <Leader>n   :Ex<CR>
 noremap <Leader>h   :call ToggleHLSearch()<CR>
 " noremap <Leader>s   :call ToggleSpell()<CR>
@@ -294,7 +293,14 @@ let g:ctrlp_match_window_bottom = 1
 let g:ctrlp_open_new_file = 0
 let g:ctrlp_open_multi = 0
 let g:ctrlp_max_height = 20
-
+" Multiple VCS's:
+let g:ctrlp_user_command = {
+\ 'types': {
+    \ 1: ['.git', 'cd %s && git ls-files'],
+    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+    \ },
+\ 'fallback': 'find %s -type f'
+\ }
 " ------------------------------------------------------------------------------
 " {{{2 Yankring
 let g:yankring_history_dir='$HOME/.vim'
@@ -344,6 +350,9 @@ let g:VCSCommandSVNDiffOpt='w'
 " {{{2 Pathogen
 source ~/.vim/bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
+" ------------------------------------------------------------------------------
+"
+"
 " {{{1 Language Specific
 " {{{2 PHP
 "  @see:
@@ -370,17 +379,7 @@ let php_htmlInStrings=1
 let g:php_folding='2'
 " ------------------------------------------------------------------------------
 " {{{2 JS
-function! JavaScriptFold()
-    setl foldmethod=syntax
-    setl foldlevelstart=1
-    syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
-
-    function! FoldText()
-        return substitute(getline(v:foldstart), '{.*', '{...}', '')
-    endfunction
-    setl foldtext=FoldText()
-endfunction
-au FileType javascript call JavaScriptFold()
+au FileType javascript setl foldmethod=indent
 au FileType javascript setl fen
 au BufRead,BufNewFile *.json set ft=javascript
 " ------------------------------------------------------------------------------
@@ -397,6 +396,8 @@ au FileType vim au BufWrite <buffer> :call DeleteTrailingWS()
 " ------------------------------------------------------------------------------
 " {{{2 Netrw
 au FileType netrw set nolist
+let g:netrw_list_hide= '.*\.swp$,.*\.pyc$'
+
 " ------------------------------------------------------------------------------
 " {{{2 Drupal
 if has("autocmd")
@@ -408,11 +409,27 @@ if has("autocmd")
   augroup END
 endif
 " ------------------------------------------------------------------------------
+" {{{2 Jinja
+au BufRead,BufNewFile *.j2 set filetype=jinja
+" {{{2 Markdown
+au Filetype markdown nnoremap <buffer> <localleader>1 yypVr=
+au Filetype markdown nnoremap <buffer> <localleader>2 yypVr-
+au Filetype markdown nnoremap <buffer> <localleader>3 I### <ESC>
+" ------------------------------------------------------------------------------
+" {{{2 Color
+" colorscheme axolx2
+" colorscheme lettuce
+" colorscheme darkblue
+" colorscheme xterm16
+" colorscheme inkpot
+" colorscheme default
+colorscheme badwolf
+set antialias
+" ------------------------------------------------------------------------------
 " {{{1 Ideas and inspiration
 "
 " Matt Wozniski: https://github.com/godlygeek/vim-files/blob/master/.vimrc
 " Steve Losh:    https://github.com/sjl/dotfiles/tree/master/vim
 " Tim Pope:      https://github.com/tpope/vimfiles
 " ------------------------------------------------------------------------------
-"
 " vim:fdm=marker:fdl=1
