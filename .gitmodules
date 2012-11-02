@@ -55,7 +55,7 @@
 	url = git://github.com/altercation/vim-colors-solarized.git
 [submodule "bundle/color-inkpot"]
 	path = bundle/color-inkpot
-	url = git://github.com/ciaranm/inkpot.git
+	url = git@github.com:axolx/inkpot.git
 [submodule "bundle/color-molokai"]
 	path = bundle/color-molokai
 	url = git://github.com/vim-scripts/molokai.git
