@@ -210,16 +210,12 @@ endfunction
 let mapleader = '\'
 cnoremap <C-a> <S-Left>
 cnoremap <C-s> <S-Right>
-imap jj <Esc>
 noremap <Leader>as   ^y$:!<C-R>"<CR>
 noremap <Leader>abd :Kbbd<CR>
 noremap <Leader>bb  :call ToggleBackground()<CR>
 noremap <Leader>bc  :close<CR>
 noremap <Leader>bd  :bdelete<CR>
-noremap <Leader>lo  :lopen<CR>
-noremap <Leader>lc  :lclose<CR>
-noremap <Leader>po  :popen<CR>
-noremap <Leader>pc  :pclose<CR>
+noremap <Leader>l   :CtrlPLine<CR>
 noremap <leader>cts :CommandTFlush<CR>
 noremap <Leader>f0  :set fdl=0<CR>
 noremap <Leader>f1  :set fdl=1<CR>
@@ -230,10 +226,9 @@ noremap <Leader>m   :make<CR>
 noremap <Leader>n   :Ex<CR>
 noremap <Leader>h   :call ToggleHLSearch()<CR>
 " noremap <Leader>s   :call ToggleSpell()<CR>
-noremap <Leader>v   :BufExplorer<CR>
-" noremap <Leader>v   :CtrlPBuffer<CR>
 noremap <Leader>r   :CtrlPMRU<CR>
-noremap <Leader>t   :CtrlP<CR>
+noremap <Leader>p   :CtrlP<CR>
+noremap <Leader>v   :BufExplorer<CR>
 noremap <Leader>ys  :YRShow<CR>
 noremap <Leader>s4  :set sw=4<CR>
 noremap <Leader>s2  :set sw=2<CR>
@@ -246,6 +241,8 @@ inoremap jk <esc>
 
 " write file as sudo
 cmap w!! w !sudo tee % >/dev/null
+
+noremap <F2> :grep -Ri <c-r><c-w> *<cr>:copen<cr>
 
 " fixes lame regex system
 "nnoremap / /\v
@@ -313,6 +310,12 @@ let g:proj_window_increment=25
 " Currently disabled in favor of AutoComplPop
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 let g:SuperTabCrMapping = 0
+let g:SuperTabClosePreviewOnPopupClose = 1
+autocmd FileType *
+\ if &omnifunc != '' |
+\   call SuperTabChain(&omnifunc, "<c-p>") |
+\   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
+\ endif
 " ------------------------------------------------------------------------------
 " {{{2 Gundo
 nnoremap <leader>g :GundoToggle<CR>
@@ -366,7 +369,6 @@ function! RunPhpcs()
     cwindow
 endfunction
 command! Phpcs execute RunPhpcs()
-nnoremap <leader>ps :Phpcs<CR>
 
 au FileType php set omnifunc=phpcomplete#CompletePHP
 au BufRead,BufNewFile *.php set foldlevel=1
@@ -414,16 +416,16 @@ au BufRead,BufNewFile *.j2 set filetype=jinja
 " {{{2 Markdown
 au Filetype markdown nnoremap <buffer> <localleader>1 yypVr=
 au Filetype markdown nnoremap <buffer> <localleader>2 yypVr-
-au Filetype markdown nnoremap <buffer> <localleader>3 I### <ESC>
+au Filetype markdown nnoremap <buffer> <localleader>3 I###
 " ------------------------------------------------------------------------------
 " {{{2 Color
 " colorscheme axolx2
 " colorscheme lettuce
 " colorscheme darkblue
 " colorscheme xterm16
-" colorscheme inkpot
+colorscheme inkpot
 " colorscheme default
-colorscheme badwolf
+" colorscheme molokai
 set antialias
 " ------------------------------------------------------------------------------
 " {{{1 Ideas and inspiration
