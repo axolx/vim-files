@@ -89,9 +89,6 @@
 [submodule "bundle/color-mac-classic"]
 	path = bundle/color-mac-classic
 	url = git://github.com/nelstrom/vim-mac-classic-theme.git
-[submodule "bundle/AutoComplPop"]
-	path = bundle/AutoComplPop
-	url = git://github.com/vim-scripts/AutoComplPop.git
 [submodule "bundle/color-badwolf"]
 	path = bundle/color-badwolf
 	url = git://github.com/sjl/badwolf.git
