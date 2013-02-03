@@ -13,8 +13,7 @@ set cmdheight=2              " The commandbar height
 set showmatch                " Show matching bracets when text indicator is over them
 set mat=2                    " How many tenths of a second to blink
 set nostartofline
-set textwidth=80
-set columns=85
+set textwidth=79
 set nowrap
 set linebreak                " wrap at end of word
 set showbreak=+              "show char in front of wraped lines
@@ -22,6 +21,7 @@ set nowrapscan
 set ignorecase
 set smartcase                " case insensitive searches become sensitive with capitals
 set foldmethod=syntax
+set fillchars="fold: "       " use spaces as fill in fold lines, instead of dashes
 set hlsearch               " see hl function & mapping below
 set incsearch
 set showmatch
@@ -63,13 +63,10 @@ syntax on
 filetype plugin indent on
 " ------------------------------------------------------------------------------
 " {{{2 Tabs and indenting
-set autoindent               " Do dumb autoindentation when no filetype is set
-set tabstop=4                " Real tab characters are 8 spaces wide,
+" Trying https://github.com/tpope/vim-sleuth instead
+"set autoindent               " Do dumb autoindentation when no filetype is set
 set shiftwidth=4             " but an indent level is 2 spaces wide.
-set softtabstop=4            " <BS> over an autoindent deletes both spaces.
 set expandtab                " Use spaces, not tabs, for autoindent/tab key.
-set smarttab                 " some smarty tab handling
-set shiftround               " Indent/outdent to nearest tabstop
 " ------------------------------------------------------------------------------
 " {{{2 Windows, Buffers
 set splitright
@@ -123,7 +120,6 @@ if has("autocmd")
  augroup myvimrchooks
   au!
   autocmd bufwritepost .vimrc source ~/.vimrc
-  autocmd bufwritepost .vimrc source ~/.gvimrc
  augroup END
 endif
 
@@ -192,7 +188,7 @@ endfunction
 
 function! ToggleWidthMargin()
     if &colorcolumn == ""
-        set colorcolumn=+2,+3,+4,+5,+6,+7,+8,+9,+10,+11,+12,+13,+14,+15,+16,+17,+18,+19,+20
+        set colorcolumn=+1
     else
         set colorcolumn=
     endif
@@ -352,6 +348,7 @@ let g:acp_behaviorSnipmateLength = 1
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=0
 let g:syntastic_quiet_warnings=1
+"let g:syntastic_python_checker = 'flake8'
 " ------------------------------------------------------------------------------
 " {{{2 Commentary
 set commentstring=//\ %s
