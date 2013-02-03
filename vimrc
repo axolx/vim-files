@@ -258,6 +258,19 @@ au BufNewFile,BufRead *.as set filetype=actionscript
 au BufRead,BufNewFile *.tpl set filetype=php
 au BufRead,BufNewFile *.md set filetype=markdown
 " ------------------------------------------------------------------------------
+" {{{2 Folding
+function MarkdownLevel()
+  let h = matchstr(getline(v:lnum), '^#\+')
+  if empty(h)
+    return "="
+  else
+    return ">" . len(h)
+  endif
+endfunction
+au BufEnter *.md setlocal foldexpr=MarkdownLevel()
+au BufEnter *.md setlocal foldmethod=expr
+
+" ------------------------------------------------------------------------------
 " {{{1 Plugins
 " ------------------------------------------------------------------------------
 " {{{2 Indentguides
