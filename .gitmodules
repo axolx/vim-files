@@ -20,9 +20,6 @@
 [submodule "bundle/gist"]
 	path = bundle/gist
 	url = git://github.com/mattn/gist-vim.git
-[submodule "bundle/yankring"]
-	path = bundle/yankring
-	url = git://github.com/chrismetcalf/vim-yankring.git
 [submodule "bundle/indentguides"]
 	path = bundle/indentguides
 	url = https://github.com/vim-scripts/Indent-Guides.git
