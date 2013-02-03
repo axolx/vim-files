@@ -7,9 +7,6 @@
 [submodule "bundle/markdown"]
 	path = bundle/markdown
 	url = git://github.com/tpope/vim-markdown.git
-[submodule "bundle/snipmate"]
-	path = bundle/snipmate
-	url = git@github.com:axolx/snipmate.vim.git
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
 	url = git://github.com/scrooloose/syntastic.git
@@ -35,18 +32,12 @@
 [submodule "bundle/matchit"]
 	path = bundle/matchit
 	url = git://github.com/edsono/vim-matchit.git
-[submodule "bundle/mru"]
-	path = bundle/mru
-	url = git://github.com/ornicar/vim-mru.git
 [submodule "bundle/netrw"]
 	path = bundle/netrw
 	url = git://github.com/vim-scripts/netrw.vim.git
 [submodule "bundle/pathogen"]
 	path = bundle/pathogen
 	url = git://github.com/tpope/vim-pathogen.git
-[submodule "bundle/project"]
-	path = bundle/project
-	url = git://github.com/shemerey/vim-project.git
 [submodule "bundle/taglist"]
 	path = bundle/taglist
 	url = git://github.com/vim-scripts/taglist.vim.git
@@ -59,36 +50,18 @@
 [submodule "bundle/color-molokai"]
 	path = bundle/color-molokai
 	url = git://github.com/vim-scripts/molokai.git
-[submodule "bundle/color-github"]
-	path = bundle/color-github
-	url = git://github.com/grillpanda/github-colorscheme.git
-[submodule "bundle/color-vividchalk"]
-	path = bundle/color-vividchalk
-	url = git://github.com/tpope/vim-vividchalk.git
 [submodule "bundle/bufexplorer"]
 	path = bundle/bufexplorer
 	url = git://github.com/markabe/bufexplorer.git
-[submodule "bundle/color-blackboard"]
-	path = bundle/color-blackboard
-	url = https://github.com/nelstrom/vim-blackboard
-[submodule "bundle/hex-highlight"]
-	path = bundle/hex-highlight
-	url = https://github.com/vim-scripts/hexHighlight.vim.git
 [submodule "bundle/unimpaired"]
 	path = bundle/unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
 [submodule "bundle/commentary"]
 	path = bundle/commentary
 	url = https://github.com/tpope/vim-commentary.git
-[submodule "bundle/VimDebugger"]
-	path = bundle/VimDebugger
-	url = git://github.com/taxilian/VimDebugger.git
 [submodule "bundle/ctrlp"]
 	path = bundle/ctrlp
 	url = git://github.com/kien/ctrlp.vim.git
-[submodule "bundle/color-mac-classic"]
-	path = bundle/color-mac-classic
-	url = git://github.com/nelstrom/vim-mac-classic-theme.git
 [submodule "bundle/color-badwolf"]
 	path = bundle/color-badwolf
 	url = git://github.com/sjl/badwolf.git
